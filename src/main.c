@@ -20,7 +20,7 @@ int main() {
     for (i = 0; i < height; i++)
         image_wb[i] = malloc(sizeof(pixel_wb) * width);
     
-    make_wb(image, height, width, image_wb);
+    convert_to_wb(image, height, width, image_wb);
     gaussian_blur(image_wb, height, width);
     sober_filter(image_wb, height, width);
 
@@ -28,16 +28,16 @@ int main() {
    
     // write_png_wb(image_wb, height, width, "img/out1.png");
     // add_contrast(image_wb, height, width, 200, 50);
-    write_png_wb(image_wb, height, width, "img/out2.png");
+    // write_png_wb(image_wb, height, width, "img/out2.png");
     // sober_filter(image_wb, height, width);
-    write_png_wb(image_wb, height, width, "img/out3.png");
+    // write_png_wb(image_wb, height, width, "img/out3.png");
     // add_contrast(image_wb, height, width, 210, 20);
     // gaussian_blur(image_wb, height, width);
 
     int n = connected_components(image_wb, height, width, 20);
     printf("%d\n", n);
 
-    write_png_color(image_wb, height, width, "img/out4.png");
+    write_png_color(image_wb, height, width, "img/output.png");
     for (i = 0; i < height; i++)
         free(image[i]);
     free(image);

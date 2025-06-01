@@ -19,7 +19,7 @@ int read_png(struct pixel ***image, int *width, int *height, char *filename){
     return 0;
 }
 
-int make_wb(struct pixel **image, int height, int width, struct pixel_wb **image_wb){
+int convert_to_wb(struct pixel **image, int height, int width, struct pixel_wb **image_wb){
     int i, j;
     for (i = 0; i < height; i++)
         for (j = 0; j < width; j++)
