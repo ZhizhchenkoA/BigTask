@@ -39,7 +39,7 @@ int main() {
     int *components_arr = calloc(n, sizeof(int));
 
     count_pixel_in_components(image_wb, height, width, components_arr);
-    write_png_color(image_wb, height, width, components_arr, 300, "img/output2.png");
+    write_png_color(image_wb, height, width, components_arr, 50, "img/output2.png");
 
     free(components_arr);
     for (i = 0; i < height; i++)
