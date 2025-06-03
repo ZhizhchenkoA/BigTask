@@ -35,3 +35,11 @@ int connected_components(struct pixel_wb **image_wb, int height, int width, int 
 
     return idx_component;
 }
+
+void count_pixel_in_components(struct pixel_wb **image_wb, int height, int width, int *componets_arr){
+    int i, j;
+    for (i = 0; i < height; i++)
+        for (j = 0; j < width; j++)
+            componets_arr[image_wb[i][j].component]++;
+    return;
+}   

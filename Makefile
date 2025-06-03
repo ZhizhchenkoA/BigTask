@@ -5,7 +5,6 @@ LDFLAGS = -lm
 SRC_DIR = src
 BUILD_DIR = build
 
-
 SRCS = $(SRC_DIR)/main.c \
        $(SRC_DIR)/filters.c \
        $(SRC_DIR)/image.c \
@@ -19,15 +18,15 @@ all: BigTask
 
 # Линковка
 BigTask: $(OBJS)
-	$(CC) $(OBJS) -lm
+	$(CC) $(OBJS) $(LDFLAGS) -o BigTask
 
-#Компиляция
+# Компиляция
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Создание папки build
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR)
 
 # Очистка
 clean:

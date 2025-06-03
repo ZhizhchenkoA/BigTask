@@ -53,7 +53,7 @@ int write_png_wb(struct pixel_wb **image_wb, int height, int width, char *filena
     return error;
 }
 
-int write_png_color(struct pixel_wb **image_wb, int height, int width, char *filename){
+int write_png_color(struct pixel_wb **image_wb, int height, int width, int *componets_arr, int min_pixels, char *filename){
     unsigned char *image = malloc(sizeof(unsigned char) * width * height * 4);
     int i, j, idx, comp;
     for (i = 0; i < height; i++)
@@ -61,7 +61,7 @@ int write_png_color(struct pixel_wb **image_wb, int height, int width, char *fil
             idx = (i * width + j) * 4;
             if (image_wb[i][j].c == 255)
                 image[idx] = image[idx + 1] = image[idx + 2] = 255;
-            else if (image_wb[i][j].c == 0)
+            else if (image_wb[i][j].c == 0 || componets_arr[image_wb[i][j].component] <= min_pixels)
                 image[idx] = image[idx + 1] = image[idx + 2] = 0;
             else{
                 comp = image_wb[i][j].component;

@@ -3,7 +3,7 @@
 int main() {
     
     int width, height;
-    char* filename = "img/input.png";
+    char* filename = "img/input2.png";
     struct pixel **image;
     int i;
 
@@ -24,7 +24,7 @@ int main() {
     gaussian_blur(image_wb, height, width);
     sober_filter(image_wb, height, width);
 
-    add_contrast(image_wb, height, width, 200, 20);
+    add_contrast(image_wb, height, width, 150, 20);
    
     // write_png_wb(image_wb, height, width, "img/out1.png");
     // add_contrast(image_wb, height, width, 200, 50);
@@ -36,8 +36,12 @@ int main() {
 
     int n = connected_components(image_wb, height, width, 20);
     printf("%d\n", n);
+    int *components_arr = calloc(n, sizeof(int));
 
-    write_png_color(image_wb, height, width, "img/output.png");
+    count_pixel_in_components(image_wb, height, width, components_arr);
+    write_png_color(image_wb, height, width, components_arr, 300, "img/output2.png");
+
+    free(components_arr);
     for (i = 0; i < height; i++)
         free(image[i]);
     free(image);
