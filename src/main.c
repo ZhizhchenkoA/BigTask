@@ -3,7 +3,7 @@
 int main() {
     
     int width, height;
-    char* filename = "img/input2.png";
+    char* filename = "img/input4.png";
     struct pixel **image;
     int i;
 
@@ -35,11 +35,11 @@ int main() {
     // gaussian_blur(image_wb, height, width);
 
     int n = connected_components(image_wb, height, width, 20);
-    printf("%d\n", n);
+    printf("Количество компонент связности %d\n", n);
     int *components_arr = calloc(n, sizeof(int));
 
     count_pixel_in_components(image_wb, height, width, components_arr);
-    write_png_color(image_wb, height, width, components_arr, 50, "img/output2.png");
+    write_png_color(image_wb, height, width, components_arr, 50, "img/output4.png");
 
     free(components_arr);
     for (i = 0; i < height; i++)
