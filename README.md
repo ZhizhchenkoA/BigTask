@@ -108,13 +108,15 @@ void add_contrast(struct pixel_wb **image_wb, int height, int width, int max_c, 
 ```
 
 Фильтр Гуасса для размытия изображения с ядро размера $3 \times 3$ 
+
 $$
-    G = \begin{pmatrix}
+    G = \left(\begin{matrix}
     0{,}064 & 0{,}084 & 0{,}064\\
     0{,}084 & 0{,}084 & 0{,}084\\
     0{,}064 & 0{,}084 & 0{,}064
-    \end{pmatrix}
+    \end{matrix}\right)
 $$
+
 ```c
 void gaussian_blur(struct pixel_wb **image_wb, int height, int width)
 ```
@@ -122,18 +124,19 @@ void gaussian_blur(struct pixel_wb **image_wb, int height, int width)
 Фильр Собеля с ядрами размера $3 \times 3$ для выделения контуров изображения
 
 $$
-    G_x = \begin{pmatrix}
+    G_x = \left(\begin{matrix}
     -1 & 0 & 1\\
     -2 & 0 & 2\\
     -1 & 0 & 1
-    \end{pmatrix}
+    \end{matrix}\right)
 $$
+
 $$
-    G_y = \begin{pmatrix}
+    G_y = \left(\begin{matrix}
     1 & 2 & 1\\
     0 & 0 & 0\\
     -1 & -2 & -1
-    \end{pmatrix}
+    \end{matrix}\right)
 $$
 
 ```c
