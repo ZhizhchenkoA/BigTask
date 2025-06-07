@@ -169,8 +169,8 @@ void count_pixel_in_components(struct pixel_wb **image_wb, int height, int width
 
 ### Работа программы на примере
 ##### ДО:
-![alt text](image-1.png)
+![alt text](img/input1.png)
 
 ##### ПОСЛЕ:
-![alt text](image.png)
+![alt text](img/output1.png)
 
