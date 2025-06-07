@@ -9,12 +9,14 @@ void gaussian_blur(struct pixel_wb **image_wb, int height, int width){
         {0.064, 0.084, 0.064}
     };
     struct pixel_wb **image_copy = copy_image_wb(image_wb, height, width);
+    double color;
     for (i = 1; i < height - 1; i++)
         for (j = 1; j < width - 1; j++){
-            image_wb[i][j].c = 0;
+            color = 0;
             for (dx = -1; dx <= 1; dx++)
                 for (dy = -1; dy <= 1; dy++)
-                    image_wb[i][j].c += (int) (image_copy[i + dx][j + dy].c * gauss[dx + 1][dy + 1]);
+                    color += (double)(image_copy[i + dx][j + dy].c) * gauss[dx + 1][dy + 1];
+            image_wb[i][j].c = color;
         }
     for (i = 0; i < height; i++)
        free(image_copy[i]);
@@ -24,18 +26,18 @@ void gaussian_blur(struct pixel_wb **image_wb, int height, int width){
 
 void sober_filter(struct pixel_wb **image_wb, int height, int width){
     struct pixel_wb **image_copy = copy_image_wb(image_wb, height, width);
-    int gx[][3] = {
+    int gx[3][3] = {
         {-1, 0, 1},
         {-2, 0, 2},
         {-1, 0, 1}
     };
-    int gy[][3] = {
+    int gy[3][3] = {
         {1, 2, 1},
         {0, 0, 0},
         {-1, -2, -1}
     };
 
-    int i, j, grad, dx, dy, sx, sy, color;
+    int i, j, grad, dx, dy, color, sx, sy;
     for (i = 1; i < height - 1; i++)
         for (j = 1; j < width - 1; j++){
             sx = 0;
